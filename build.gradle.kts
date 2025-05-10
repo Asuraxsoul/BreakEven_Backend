@@ -31,17 +31,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
 }
 
-tasks.jar {
-    manifest {
-        attributes["Main-Class"] = "com.breakeven.backend.Application"
-    }
-
-    from({
-        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
-    })
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveFileName.set("app.jar")
+tasks.bootJar {
+    archiveBaseName.set("app")
+    archiveVersion.set("")
 }
 
 tasks.test {
