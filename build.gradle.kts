@@ -33,7 +33,7 @@ dependencies {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "com.breakeven.backend.service.Application"
+        attributes["Main-Class"] = "com.breakeven.backend.Application"
     }
 
     from({
