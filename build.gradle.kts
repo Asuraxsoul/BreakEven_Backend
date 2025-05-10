@@ -32,6 +32,15 @@ dependencies {
 }
 
 tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.breakeven.backend.service.Application"
+    }
+
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     archiveFileName.set("app.jar")
 }
 
